@@ -13,5 +13,7 @@
 <body>
 
 <h1>Spring Rest Demo</h1>
+
+<a href="${pageContext.request.contextPath}/api/customers">Get All Customers</a>
 </body>
 </html>
