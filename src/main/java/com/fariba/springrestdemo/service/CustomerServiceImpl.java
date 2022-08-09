@@ -2,6 +2,7 @@ package com.fariba.springrestdemo.service;
 
 import com.fariba.springrestdemo.dao.CustomerDAO;
 import com.fariba.springrestdemo.entity.Customer;
+import com.fariba.springrestdemo.rest.CustomerNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +28,11 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer getCustomer(int id) {
-        return customerDAO.getCustomer(id);
+        Customer customer = customerDAO.getCustomer(id);
+        if (customer == null) {
+            throw new CustomerNotFoundException("Customer id not Found -" + id);
+        }
+        return customer;
     }
 
     @Override
