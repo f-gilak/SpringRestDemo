@@ -4,13 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_tmp_customer", schema = "cmn")
-@SequenceGenerator(name = "sequence",allocationSize = 1, sequenceName = "sq_tmp_customer",schema = "cmn")
+@SequenceGenerator(name = "sq_customer",allocationSize = 1, sequenceName = "sq_tmp_customer",schema = "cmn")
 public class Customer {
 
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.AUTO,generator = "sequence")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sq_customer")
+    private long id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -25,11 +25,11 @@ public class Customer {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

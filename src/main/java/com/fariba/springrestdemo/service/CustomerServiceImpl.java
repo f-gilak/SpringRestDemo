@@ -27,17 +27,18 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getCustomer(int id) {
+    public Customer getCustomer(long id) {
         Customer customer = customerDAO.getCustomer(id);
         if (customer == null) {
-            throw new CustomerNotFoundException("Customer id not Found -" + id);
+            throw new CustomerNotFoundException("Customer id not Found : " + id);
         }
         return customer;
     }
 
     @Override
-    public void deleteCustomer(int id) {
-        customerDAO.deleteCustomer(id);
+    public void deleteCustomer(long id) {
+        Customer customer = getCustomer(id);
+        customerDAO.deleteCustomer(customer.getId());
 
     }
 

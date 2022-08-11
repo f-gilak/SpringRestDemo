@@ -50,7 +50,6 @@ public class DemoAppConfig implements WebMvcConfigurer {
         dataSource.setMinPoolSize(getIntProperty("connection.pool.minPoolSize"));
         dataSource.setMaxPoolSize(getIntProperty("connection.pool.maxPoolSize"));
         dataSource.setMaxIdleTime(getIntProperty("connection.pool.maxIdleTime"));
-
         return dataSource;
     }
 
@@ -71,7 +70,6 @@ public class DemoAppConfig implements WebMvcConfigurer {
         sessionFactory.setDataSource(myDataSource());
         sessionFactory.setPackagesToScan(environment.getProperty("hibernate.packagesToScan"));
         sessionFactory.setHibernateProperties(getHibernateProperties());
-
         return sessionFactory;
     }
 
@@ -80,6 +78,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
         Properties props = new Properties();
         props.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         props.setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+//        props.setProperty("hibernate.hbm2ddl.auto", "create");
 
         return props;
     }

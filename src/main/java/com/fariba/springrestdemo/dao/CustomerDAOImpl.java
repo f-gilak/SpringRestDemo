@@ -31,14 +31,14 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public Customer getCustomer(int id) {
+    public Customer getCustomer(long id) {
         Session session = sessionFactory.getCurrentSession();
         Customer customer = session.get(Customer.class, id);
         return customer;
     }
 
     @Override
-    public void deleteCustomer(int id) {
+    public void deleteCustomer(long id) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("delete from Customer where id=:id");
         query.setParameter("id", id);
